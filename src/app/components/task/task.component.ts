@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { Task } from "src/app/models/Task";
 import { TaskService } from "../../services/task.service";
 
@@ -8,19 +8,16 @@ import { TaskService } from "../../services/task.service";
   styleUrls: ["./task.component.css"]
 })
 export class TaskComponent implements OnInit {
+  @Input() listId: string = "5e5e4bbeee5b26339693d8ae";
   tasks: Task[];
-  @Input() listId: string;
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-    this.taskService.getTasksByListId(this.listId).subscribe(tasks => {
-      this.tasks = tasks;
-    });
-  }
-
-  ngOnChanges() {
-    console.log("1");
+    // console.log(this.listId, ";lakdsjf");
+    this.taskService
+      .getTasksByListId(this.listId)
+      .subscribe(tasks => (this.tasks = tasks));
   }
 
   deleteTask(task: Task) {

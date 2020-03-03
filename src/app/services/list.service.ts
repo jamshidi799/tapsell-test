@@ -35,7 +35,7 @@ export class ListService {
 
   // Delete List
   deleteList(list: List): Observable<List> {
-    const url = `${this.listsUrl}/${list.id}`;
+    const url = `${this.listsUrl}/${list._id}`;
     return this.http.delete<List>(url, httpOptions);
   }
 
@@ -45,7 +45,7 @@ export class ListService {
   }
 
   editList(list: List): Observable<any> {
-    const url = `${this.listsUrl}/${list.id}`;
+    const url = `${this.listsUrl}/${list._id}`;
     return this.http.put(url, list, httpOptions);
   }
 }

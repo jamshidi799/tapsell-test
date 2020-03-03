@@ -11,6 +11,9 @@ import { TaskItemComponent } from "./components/task-item/task-item.component";
 import { HeaderComponent } from "./components//header/header.component";
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddListComponent } from './components/add-list/add-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     TaskItemComponent,
     HeaderComponent,
     AddTaskComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent,
+    AddListComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
