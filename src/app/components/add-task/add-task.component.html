@@ -1,15 +1,16 @@
 <form class="form" (ngSubmit)="onSubmit()">
-  <input
-    type="text"
-    name="title"
-    [(ngModel)]="title"
-    placeholder="Add title..."
-  />
-  <input
-    type="text"
-    name="discription"
-    [(ngModel)]="discription"
-    placeholder="Add discription..."
-  />
-  <input type="submit" value="Submit" class="btn" />
+  <input matInput type="text" name="title" placeholder="Add title..." />
+  <mat-form-field class="example-full-width">
+    <mat-label color="accent">Email</mat-label>
+    <input
+      matInput
+      type="text"
+      name="discription"
+      placeholder="Add discription..."
+    />
+    <mat-hint>Errors appear instantly!</mat-hint>
+  </mat-form-field>
+
+  <br />
+  <button mat-raised-button color="accent" role="submit">Primary</button>
 </form>

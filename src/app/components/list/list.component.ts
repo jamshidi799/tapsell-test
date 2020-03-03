@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
 import { List } from "../../models/List";
@@ -14,6 +14,7 @@ import { TaskService } from "src/app/services/task.service";
 export class ListComponent implements OnInit {
   @Input() isMain: boolean;
   list: List;
+  listId = this.route.snapshot.paramMap.get("listId");
 
   constructor(
     private listService: ListService,
@@ -21,6 +22,10 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getList();
+  }
+
+  getList() {
     if (!this.isMain) {
       const listId = this.route.snapshot.paramMap.get("listId");
       this.listService.getList(listId).subscribe(list => (this.list = list));

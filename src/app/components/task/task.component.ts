@@ -7,16 +7,26 @@ import { TaskService } from "../../services/task.service";
   templateUrl: "./task.component.html",
   styleUrls: ["./task.component.css"]
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnChanges {
   @Input() listId: string = "5e5e4bbeee5b26339693d8ae";
   tasks: Task[];
 
   constructor(private taskService: TaskService) {}
 
-  ngOnInit() {
-    // console.log(this.listId, ";lakdsjf");
+  // ngOnInit() {
+  //   // console.log(this.listId, ";lakdsjf");
+  //   this.taskService
+  //     .getTasksByListId(this.listId)
+  //     .subscribe(tasks => (this.tasks = tasks));
+  // }
+
+  ngOnChanges() {
+    this.getTasks(this.listId);
+  }
+
+  getTasks(id: string) {
     this.taskService
-      .getTasksByListId(this.listId)
+      .getTasksByListId(id)
       .subscribe(tasks => (this.tasks = tasks));
   }
 

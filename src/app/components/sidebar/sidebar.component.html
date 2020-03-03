@@ -1,5 +1,5 @@
 <div *ngFor="let list of lists">
-  <a [routerLink]="['list', list._id]">
+  <a routerLink="['list', list._id]">
     {{ list.title }}
   </a>
 </div>

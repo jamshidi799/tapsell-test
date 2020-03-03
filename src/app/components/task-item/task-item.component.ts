@@ -15,16 +15,6 @@ export class TaskItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Set Dynamic Classes
-  setClasses() {
-    let classes = {
-      task: true,
-      "is-complete": this.task.done
-    };
-
-    return classes;
-  }
-
   onToggle(task) {
     // Toggle in UI
     task.done = !task.done;
