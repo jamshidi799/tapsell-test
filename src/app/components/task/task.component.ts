@@ -9,7 +9,7 @@ import { TaskService } from "../../services/task.service";
 })
 export class TaskComponent implements OnInit {
   tasks: Task[];
-  @Input() listId: number;
+  @Input() listId: string;
 
   constructor(private taskService: TaskService) {}
 
@@ -17,6 +17,10 @@ export class TaskComponent implements OnInit {
     this.taskService.getTasksByListId(this.listId).subscribe(tasks => {
       this.tasks = tasks;
     });
+  }
+
+  ngOnChanges() {
+    console.log("1");
   }
 
   deleteTask(task: Task) {

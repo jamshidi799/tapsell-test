@@ -25,7 +25,7 @@ export class TaskService {
   }
 
   // Get Tasks by list id
-  getTasksByListId(id: number): Observable<Task[]> {
+  getTasksByListId(id: string): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.TasksUrl}${"/query/"}${id}`);
   }
 
