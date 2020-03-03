@@ -14,8 +14,8 @@ const httpOptions = {
   providedIn: "root"
 })
 export class ListService {
-  listsUrl: string = "http://localhost:4200/api/lists";
-  mainListUrl: string = "http://localhost:4200/api/mainList";
+  listsUrl: string = "http://localhost:3000/api/lists";
+  mainListUrl: string = "http://localhost:3000/api/mainList";
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class ListService {
   }
 
   // GET LIST BY ID
-  getList(id: number): Observable<List> {
+  getList(id: string): Observable<List> {
     return this.http.get<List>(`${this.listsUrl}/${id}`);
   }
 

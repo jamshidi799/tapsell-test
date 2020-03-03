@@ -14,14 +14,19 @@ const httpOptions = {
   providedIn: "root"
 })
 export class TaskService {
-  TasksUrl: string = "http://localhost:4200/api/tasks";
-  CompletedTaskUrl: string = "http://localhost:4200/api/completed";
+  TasksUrl: string = "http://localhost:3000/api/tasks";
+  CompletedTaskUrl: string = "http://localhost:3000/api/completed";
 
   constructor(private http: HttpClient) {}
 
   // Get Tasks
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.TasksUrl);
+  }
+
+  // Get Tasks by list id
+  getTasksByListId(id: number): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.TasksUrl}${"/query/"}${id}`);
   }
 
   getCompletedTask(): Observable<Task[]> {

@@ -9,6 +9,8 @@ import { TaskComponent } from "./components/task/task.component";
 import { ListComponent } from "./components/list/list.component";
 import { TaskItemComponent } from "./components/task-item/task-item.component";
 import { HeaderComponent } from "./components//header/header.component";
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HeaderComponent } from "./components//header/header.component";
     TaskComponent,
     ListComponent,
     TaskItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddTaskComponent,
+    SidebarComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
