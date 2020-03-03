@@ -1,5 +1,8 @@
-<div *ngFor="let list of lists">
-  <a routerLink="['list', list._id]">
-    {{ list.title }}
+<mat-nav-list>
+  <h3 matSubheader>Lists</h3>
+  <a mat-list-item *ngFor="let list of lists" [routerLink]="['list', list._id]">
+    <mat-icon matListIcon>folder</mat-icon>
+    <h4 matLine>{{ list.title }}</h4>
+    <mat-divider></mat-divider>
   </a>
-</div>
+</mat-nav-list>

@@ -9,18 +9,21 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TaskComponent } from "./components/task/task.component";
 import { ListComponent } from "./components/list/list.component";
 import { TaskItemComponent } from "./components/task-item/task-item.component";
-import { HeaderComponent } from "./components//header/header.component";
 import { AddTaskComponent } from "./components/add-task/add-task.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { HomeComponent } from "./components/home/home.component";
 import { AddListComponent } from "./components/add-list/add-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 @NgModule({
   declarations: [
@@ -28,11 +31,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     TaskComponent,
     ListComponent,
     TaskItemComponent,
-    HeaderComponent,
     AddTaskComponent,
     SidebarComponent,
     HomeComponent,
-    AddListComponent
+    AddListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTabsModule
+    MatDividerModule,
+    MatTabsModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
