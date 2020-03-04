@@ -1,0 +1,7 @@
+.task-grid {
+  overflow: scroll;
+}
+
+.task-grid::-webkit-scrollbar {
+  display: none;
+}

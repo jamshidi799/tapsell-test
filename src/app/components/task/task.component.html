@@ -1,7 +1,14 @@
+<h3 matSubheader>Tasks</h3>
+<mat-grid-list cols="5" gutterSize="20px" rowHeight="300px" class="task-grid">
+  <mat-grid-tile *ngFor="let task of tasks">
+    <app-task-item
+      [task]="task"
+      (deleteTask)="deleteTask($event)"
+      (addToComplete)="addToComplete($event)"
+      class="task-card"
+    >
+    </app-task-item>
+  </mat-grid-tile>
+</mat-grid-list>
+<br />
 <app-add-task (addTask)="addTask($event)" [listId]="listId"></app-add-task>
-<app-task-item
-  *ngFor="let task of tasks"
-  [task]="task"
-  (deleteTask)="deleteTask($event)"
->
-</app-task-item>

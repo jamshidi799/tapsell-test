@@ -1,16 +1,28 @@
 <form class="form" (ngSubmit)="onSubmit()">
-  <input matInput type="text" name="title" placeholder="Add title..." />
-  <mat-form-field class="example-full-width">
-    <mat-label color="accent">Email</mat-label>
+  <mat-form-field class="form-field">
+    <mat-label color="accent">title</mat-label>
     <input
       matInput
       type="text"
-      name="discription"
-      placeholder="Add discription..."
+      [(ngModel)]="title"
+      name="title"
+      placeholder="Add title..."
     />
     <mat-hint>Errors appear instantly!</mat-hint>
   </mat-form-field>
 
-  <br />
-  <button mat-raised-button color="accent" role="submit">Primary</button>
+  <mat-form-field class="form-field">
+    <mat-label color="accent">description</mat-label>
+    <textarea
+      matInput
+      type="text"
+      [(ngModel)]="description"
+      name="description"
+      placeholder="Add discription..."
+    ></textarea>
+    <mat-hint>Errors appear instantly!</mat-hint>
+  </mat-form-field>
+  <button mat-raised-button color="accent" role="submit" class="add-task-btn">
+    Primary
+  </button>
 </form>

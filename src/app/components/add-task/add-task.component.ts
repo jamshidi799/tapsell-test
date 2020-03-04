@@ -11,7 +11,7 @@ export class AddTaskComponent implements OnInit {
   @Input() listId: EventEmitter<number> = new EventEmitter();
 
   title: string;
-  discription: string;
+  description: string;
 
   constructor() {}
 
@@ -20,7 +20,7 @@ export class AddTaskComponent implements OnInit {
   onSubmit() {
     const task = {
       title: this.title,
-      discription: this.discription,
+      description: this.description,
       list: this.listId,
       done: false
     };

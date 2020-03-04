@@ -10,6 +10,7 @@ import { TaskService } from "src/app/services/task.service";
 export class TaskItemComponent implements OnInit {
   @Input() task: Task;
   @Output() deleteTask: EventEmitter<Task> = new EventEmitter();
+  @Output() addToComplete: EventEmitter<Task> = new EventEmitter();
 
   constructor(private taskService: TaskService) {}
 
@@ -24,5 +25,9 @@ export class TaskItemComponent implements OnInit {
 
   onDelete(task) {
     this.deleteTask.emit(task);
+  }
+
+  onDoneClicked(task: Task) {
+    this.addToComplete.emit(task);
   }
 }

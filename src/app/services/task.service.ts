@@ -35,7 +35,7 @@ export class TaskService {
 
   // Delete Task
   deleteTask(task: Task): Observable<Task> {
-    const url = `${this.TasksUrl}/${task.id}`;
+    const url = `${this.TasksUrl}/${task._id}`;
     return this.http.delete<Task>(url, httpOptions);
   }
 
@@ -45,12 +45,12 @@ export class TaskService {
   }
 
   editTask(task: Task): Observable<any> {
-    const url = `${this.TasksUrl}/${task.id}`;
+    const url = `${this.TasksUrl}/${task._id}`;
     return this.http.put(url, task, httpOptions);
   }
 
   addToCompleted(task: Task): Observable<any> {
-    const url = `${this.TasksUrl}/${task.id}`;
+    const url = `${this.TasksUrl}/${task._id}`;
     return this.http.put(url, task, httpOptions);
   }
 }

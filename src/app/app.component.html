@@ -1,10 +1,10 @@
 <div>
   <app-navbar></app-navbar>
-  <mat-grid-list cols="4" rowHeight="200px">
+  <mat-grid-list cols="6" rowHeight="200px">
     <mat-grid-tile colspan="1" rowspan="2"
       ><app-sidebar></app-sidebar
     ></mat-grid-tile>
-    <mat-grid-tile colspan="3" rowspan="2"
+    <mat-grid-tile colspan="5" rowspan="3" class="task-grid"
       ><router-outlet></router-outlet
     ></mat-grid-tile>
   </mat-grid-list>
