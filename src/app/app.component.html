@@ -1,11 +1,9 @@
-<div>
-  <app-navbar></app-navbar>
-  <mat-grid-list cols="6" rowHeight="200px">
-    <mat-grid-tile colspan="1" rowspan="2"
-      ><app-sidebar></app-sidebar
-    ></mat-grid-tile>
-    <mat-grid-tile colspan="5" rowspan="3" class="task-grid"
-      ><router-outlet></router-outlet
-    ></mat-grid-tile>
-  </mat-grid-list>
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-2">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-10">
+    <router-outlet></router-outlet>
+  </div>
 </div>

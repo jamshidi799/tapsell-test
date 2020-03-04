@@ -1,4 +1,5 @@
 <form class="form" (ngSubmit)="onSubmit()">
+  <div class="form-header">create task</div>
   <mat-form-field class="form-field">
     <mat-label color="accent">title</mat-label>
     <input
@@ -8,7 +9,6 @@
       name="title"
       placeholder="Add title..."
     />
-    <mat-hint>Errors appear instantly!</mat-hint>
   </mat-form-field>
 
   <mat-form-field class="form-field">
@@ -20,9 +20,8 @@
       name="description"
       placeholder="Add discription..."
     ></textarea>
-    <mat-hint>Errors appear instantly!</mat-hint>
   </mat-form-field>
   <button mat-raised-button color="accent" role="submit" class="add-task-btn">
-    Primary
+    create
   </button>
 </form>
