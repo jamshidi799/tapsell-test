@@ -3,7 +3,6 @@
     *ngFor="let task of tasks"
     [expanded]="step === task._id"
     (opened)="setStep(task._id)"
-    hideToggle
   >
     <mat-expansion-panel-header>
       <mat-panel-title>

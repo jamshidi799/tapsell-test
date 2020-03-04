@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ListService } from "src/app/services/list.service";
 
 @Component({
   selector: "app-add-list",
@@ -8,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
 export class AddListComponent implements OnInit {
   title: string;
 
-  constructor() {}
+  constructor(private listService: ListService) {}
 
   ngOnInit(): void {}
 

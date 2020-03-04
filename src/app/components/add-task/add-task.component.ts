@@ -12,6 +12,7 @@ export class AddTaskComponent implements OnInit {
 
   title: string;
   description: string;
+  panelOpenState = false;
 
   constructor() {}
 

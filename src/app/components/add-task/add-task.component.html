@@ -1,27 +1,43 @@
-<form class="form" (ngSubmit)="onSubmit()">
-  <div class="form-header">create task</div>
-  <mat-form-field class="form-field">
-    <mat-label color="accent">title</mat-label>
-    <input
-      matInput
-      type="text"
-      [(ngModel)]="title"
-      name="title"
-      placeholder="Add title..."
-    />
-  </mat-form-field>
+<mat-expansion-panel
+  class="expansion"
+  [expanded]="panelOpenState"
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <header>add task</header>
+  </mat-expansion-panel-header>
+  <form class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field">
+      <mat-label color="accent">title</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="title"
+        name="title"
+        placeholder="Add title..."
+      />
+    </mat-form-field>
 
-  <mat-form-field class="form-field">
-    <mat-label color="accent">description</mat-label>
-    <textarea
-      matInput
-      type="text"
-      [(ngModel)]="description"
-      name="description"
-      placeholder="Add discription..."
-    ></textarea>
-  </mat-form-field>
-  <button mat-raised-button color="accent" role="submit" class="add-task-btn">
-    create
-  </button>
-</form>
+    <mat-form-field class="form-field">
+      <mat-label color="accent">description</mat-label>
+      <textarea
+        matInput
+        type="text"
+        [(ngModel)]="description"
+        name="description"
+        placeholder="Add discription..."
+      ></textarea>
+    </mat-form-field>
+    <br />
+    <button
+      mat-raised-button
+      color="accent"
+      role="submit"
+      class="add-task-btn"
+      (click)="panelOpenState = !panelOpenState"
+    >
+      create
+    </button>
+  </form>
+</mat-expansion-panel>

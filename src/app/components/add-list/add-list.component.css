@@ -1,0 +1,15 @@
+.form-field {
+  margin-top: 10px;
+}
+
+.add-list-btn {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.form-header {
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: large;
+}

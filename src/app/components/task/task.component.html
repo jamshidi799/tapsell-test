@@ -1,19 +1,15 @@
-<div class="row">
-  <div class="col-9">
-    <header class="task-header">Tasks</header>
-    <div class="row task-flex">
-      <app-task-item
-        *ngFor="let task of tasks"
-        [task]="task"
-        (deleteTask)="deleteTask($event)"
-        (addToComplete)="addToComplete($event)"
-        class="col-6 task-card"
-      >
-      </app-task-item>
-    </div>
-  </div>
-
-  <div class="col-3">
+<div>
+  <header class="task-header">
     <app-add-task (addTask)="addTask($event)" [listId]="listId"></app-add-task>
+  </header>
+  <div class="row task-flex">
+    <app-task-item
+      *ngFor="let task of tasks"
+      [task]="task"
+      (deleteTask)="deleteTask($event)"
+      (addToComplete)="addToComplete($event)"
+      class="col-6 task-card"
+    >
+    </app-task-item>
   </div>
 </div>

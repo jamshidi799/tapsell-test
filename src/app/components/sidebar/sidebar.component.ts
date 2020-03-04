@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { map } from "rxjs/operators";
+
 import { List } from "../../models/List";
 import { ListService } from "../../services/list.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-sidebar",
@@ -12,6 +16,12 @@ export class SidebarComponent implements OnInit {
   constructor(private listService: ListService) {}
 
   ngOnInit(): void {
-    this.listService.getLists().subscribe(lists => (this.lists = lists));
+    this.getLists();
+  }
+
+  getLists() {
+    this.listService.getLists().subscribe(lists => {
+      this.lists = lists;
+    });
   }
 }
