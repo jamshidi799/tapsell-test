@@ -1,0 +1,24 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel
+    *ngFor="let task of tasks"
+    [expanded]="step === task._id"
+    (opened)="setStep(task._id)"
+    hideToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ task.title }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ task.date }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p><strong>description</strong>: {{ task.description }}</p>
+
+    <mat-action-row>
+      <button mat-stroked-button color="warn" (click)="onDelete(task._id)">
+        delete
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

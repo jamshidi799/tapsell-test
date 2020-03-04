@@ -13,13 +13,6 @@ export class TaskComponent implements OnChanges {
 
   constructor(private taskService: TaskService) {}
 
-  // ngOnInit() {
-  //   // console.log(this.listId, ";lakdsjf");
-  //   this.taskService
-  //     .getTasksByListId(this.listId)
-  //     .subscribe(tasks => (this.tasks = tasks));
-  // }
-
   ngOnChanges() {
     this.getTasks(this.listId);
   }
@@ -32,18 +25,16 @@ export class TaskComponent implements OnChanges {
       );
   }
 
-  deleteTask(task: Task) {
+  deleteTask(taskId: string) {
     // Remove From UI
-    this.tasks = this.tasks.filter(t => t._id !== task._id);
-    // Remove from server
-    this.taskService.deleteTask(task).subscribe();
+    this.tasks = this.tasks.filter(t => t._id !== taskId);
+    this.taskService.deleteTask(taskId).subscribe();
   }
 
   addToComplete(task: Task) {
     // Remove From UI
     this.tasks = this.tasks.filter(t => t._id !== task._id);
     const completedTask: Task = { ...task, done: true };
-    // Add To Completed Task
     this.taskService.addToCompleted(completedTask).subscribe();
   }
 

@@ -9,22 +9,15 @@ import { TaskService } from "src/app/services/task.service";
 })
 export class TaskItemComponent implements OnInit {
   @Input() task: Task;
-  @Output() deleteTask: EventEmitter<Task> = new EventEmitter();
+  @Output() deleteTask: EventEmitter<string> = new EventEmitter();
   @Output() addToComplete: EventEmitter<Task> = new EventEmitter();
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {}
 
-  onToggle(task) {
-    // Toggle in UI
-    task.done = !task.done;
-    // Toggle on server
-    this.taskService.addToCompleted(task).subscribe(task => console.log(task));
-  }
-
-  onDelete(task) {
-    this.deleteTask.emit(task);
+  onDelete(taskId: string) {
+    this.deleteTask.emit(taskId);
   }
 
   onDoneClicked(task: Task) {

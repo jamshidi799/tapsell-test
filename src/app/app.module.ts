@@ -13,6 +13,8 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -25,6 +27,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { AddListComponent } from "./components/add-list/add-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavbarComponent } from "./components/navbar/navbar.component";
+import { CompletedTaskComponent } from "./components/completed-task/completed-task.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
     SidebarComponent,
     HomeComponent,
     AddListComponent,
-    NavbarComponent
+    NavbarComponent,
+    CompletedTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
     MatTabsModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
