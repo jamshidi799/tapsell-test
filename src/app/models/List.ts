@@ -1,6 +1,6 @@
 export class List {
-  _id: string;
+  _id?: string;
   title: string;
-  date: Date;
+  date?: Date;
   isMain: Boolean;
 }

@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { List } from "../models/List";
+import { map } from "rxjs/operators";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,9 +18,21 @@ export class ListService {
   listsUrl: string = "http://localhost:3000/api/lists";
   mainListUrl: string = "http://localhost:3000/api/mainList";
 
+  // private readonly _lists = new BehaviorSubject<List[]>([]);
+  // readonly lists$ = this._lists.asObservable();
+
+  lists: Observable<List[]>;
+
   constructor(private http: HttpClient) {}
 
-  // Get Lists
+  // get lists(): List[] {
+  //   return this._lists.getValue();
+  // }
+
+  // set lists(val: List[]) {
+  //   this._lists.next(val);
+  // }
+
   getLists(): Observable<List[]> {
     return this.http.get<List[]>(this.listsUrl);
   }
@@ -33,15 +46,17 @@ export class ListService {
     return this.http.get<List>(this.mainListUrl);
   }
 
-  // Delete List
   deleteList(list: List): Observable<List> {
     const url = `${this.listsUrl}/${list._id}`;
     return this.http.delete<List>(url, httpOptions);
   }
 
-  // Add List
   addList(list: List): Observable<List> {
-    return this.http.post<List>(this.listsUrl, list, httpOptions);
+    const response = this.http.post<List>(this.listsUrl, list, httpOptions);
+    // response.subscribe(list => {
+    //   this.lists.
+    // });
+    return response;
   }
 
   editList(list: List): Observable<any> {

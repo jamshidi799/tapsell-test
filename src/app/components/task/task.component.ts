@@ -43,4 +43,12 @@ export class TaskComponent implements OnChanges {
       this.tasks.push(task);
     });
   }
+
+  editTask(task: Task) {
+    this.tasks = this.tasks.map(t => {
+      if (t._id === task._id) return task;
+      return t;
+    });
+    this.taskService.editTask(task).subscribe();
+  }
 }

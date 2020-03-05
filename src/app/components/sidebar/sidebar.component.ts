@@ -13,7 +13,7 @@ import { Observable } from "rxjs";
 })
 export class SidebarComponent implements OnInit {
   lists: List[];
-  constructor(private listService: ListService) {}
+  constructor(public listService: ListService) {}
 
   ngOnInit(): void {
     this.getLists();
