@@ -1,4 +1,7 @@
-<mat-accordion class="col-11 completed-task-layout">
+<mat-accordion
+  class="col-11 completed-task-layout"
+  *ngIf="tasks !== undefined && tasks.length !== 0; else showMessage"
+>
   <mat-expansion-panel
     *ngFor="let task of tasks"
     [expanded]="step === task._id"
@@ -9,7 +12,7 @@
         {{ task.title }}
       </mat-panel-title>
       <mat-panel-description>
-        {{ task.date }}
+        {{ reformatDate(task.date) }}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p><strong>description</strong>: {{ task.description }}</p>
@@ -21,3 +24,9 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+
+<ng-template #showMessage>
+  <h2 class="else-message">
+    there is no completed task!!!
+  </h2>
+</ng-template>

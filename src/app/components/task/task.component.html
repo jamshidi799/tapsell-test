@@ -2,7 +2,10 @@
   <header class="task-header">
     <app-add-task (addTask)="addTask($event)" [listId]="listId"></app-add-task>
   </header>
-  <div class="row task-flex">
+  <div
+    class="row task-flex"
+    *ngIf="tasks !== undefined && tasks.length !== 0; else showMessage"
+  >
     <app-task-item
       *ngFor="let task of tasks"
       [task]="task"
@@ -15,3 +18,8 @@
     </app-task-item>
   </div>
 </div>
+<ng-template #showMessage>
+  <h2 class="else-message">
+    there is no task!!!
+  </h2>
+</ng-template>

@@ -27,4 +27,15 @@ export class CompletedTaskComponent implements OnInit {
     this.tasks = this.tasks.filter(task => task._id !== taskId);
     this.taskService.deleteTask(taskId).subscribe();
   }
+
+  reformatDate(date: string) {
+    const dateObj = new Date(date);
+    const reformattedDate =
+      dateObj.getDate() +
+      "/" +
+      dateObj.getMonth() +
+      "/" +
+      dateObj.getFullYear();
+    return reformattedDate;
+  }
 }
