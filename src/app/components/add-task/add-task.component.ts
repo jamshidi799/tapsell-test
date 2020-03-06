@@ -19,13 +19,14 @@ export class AddTaskComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+    this.panelOpenState = false;
     const task = {
       title: this.title,
       description: this.description,
       list: this.listId,
       done: false
     };
-
+    console.log("on submit");
     this.addTask.emit(task);
   }
 }

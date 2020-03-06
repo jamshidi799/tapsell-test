@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { Task } from "src/app/models/Task";
 import { TaskService } from "../../services/task.service";
+import { ListService } from "src/app/services/list.service";
 
 @Component({
   selector: "app-task",
@@ -11,7 +12,10 @@ export class TaskComponent implements OnChanges {
   @Input() listId: string = "5e5e4bbeee5b26339693d8ae";
   tasks: Task[];
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private listService: ListService
+  ) {}
 
   ngOnChanges() {
     this.getTasks(this.listId);
@@ -36,6 +40,14 @@ export class TaskComponent implements OnChanges {
     this.tasks = this.tasks.filter(t => t._id !== task._id);
     const completedTask: Task = { ...task, done: true };
     this.taskService.addToCompleted(completedTask).subscribe();
+  }
+
+  addToHomePage(task: Task) {
+    this.tasks = this.tasks.filter(t => t._id !== task._id);
+    this.listService.getMainList().subscribe(list => {
+      task.list = list._id;
+      this.taskService.editTask(task).subscribe();
+    });
   }
 
   addTask(task: Task) {

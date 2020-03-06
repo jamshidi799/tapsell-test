@@ -18,6 +18,7 @@ export class TaskItemComponent implements OnInit {
   @Output() deleteTask: EventEmitter<string> = new EventEmitter();
   @Output() addToComplete: EventEmitter<Task> = new EventEmitter();
   @Output() editTask: EventEmitter<Task> = new EventEmitter();
+  @Output() addToHomePage: EventEmitter<Task> = new EventEmitter();
   date: string;
 
   constructor(public dialog: MatDialog) {}
@@ -47,6 +48,10 @@ export class TaskItemComponent implements OnInit {
   onEditTask(newTast: Task) {
     this.task = { ...newTast };
     this.editTask.emit(this.task);
+  }
+
+  onHomeClicked() {
+    this.addToHomePage.emit(this.task);
   }
 
   openDialog(): void {
