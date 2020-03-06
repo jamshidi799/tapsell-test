@@ -26,7 +26,6 @@ export class AddTaskComponent implements OnInit {
       list: this.listId,
       done: false
     };
-    console.log("on submit");
     this.addTask.emit(task);
   }
 }

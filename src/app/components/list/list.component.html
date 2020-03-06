@@ -1,3 +1,5 @@
-<div>
+<div *ngIf="list; else elseBlock">
+  <header class="list-header">{{ list.title }}</header>
   <app-task [listId]="list._id"></app-task>
 </div>
+<ng-template #elseBlock>is loading</ng-template>

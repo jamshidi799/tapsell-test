@@ -16,6 +16,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -29,7 +30,8 @@ import { AddListComponent } from "./components/add-list/add-list.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { CompletedTaskComponent } from "./components/completed-task/completed-task.component";
-import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { EditTaskComponent } from "./components/edit-task/edit-task.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     AddListComponent,
     NavbarComponent,
     CompletedTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     MatCardModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

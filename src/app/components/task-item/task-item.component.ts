@@ -7,6 +7,7 @@ import {
 import { Task } from "src/app/models/Task";
 import { EditTaskComponent } from "../edit-task/edit-task.component";
 import { from } from "rxjs";
+import { ListService } from "src/app/services/list.service";
 
 @Component({
   selector: "app-task-item",
@@ -20,11 +21,14 @@ export class TaskItemComponent implements OnInit {
   @Output() editTask: EventEmitter<Task> = new EventEmitter();
   @Output() addToHomePage: EventEmitter<Task> = new EventEmitter();
   date: string;
+  isDailyTask: boolean;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private listService: ListService) {}
 
   ngOnInit(): void {
     this.reformatDate();
+    if (this.task.list === this.listService.getMainListId())
+      this.isDailyTask = true;
   }
 
   reformatDate() {

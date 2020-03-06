@@ -17,21 +17,11 @@ const httpOptions = {
 export class ListService {
   listsUrl: string = "http://localhost:3000/api/lists";
   mainListUrl: string = "http://localhost:3000/api/mainList";
+  mainListId: string;
 
-  // private readonly _lists = new BehaviorSubject<List[]>([]);
-  // readonly lists$ = this._lists.asObservable();
-
-  lists: Observable<List[]>;
-
-  constructor(private http: HttpClient) {}
-
-  // get lists(): List[] {
-  //   return this._lists.getValue();
-  // }
-
-  // set lists(val: List[]) {
-  //   this._lists.next(val);
-  // }
+  constructor(private http: HttpClient) {
+    this.getMainList().subscribe(list => (this.mainListId = list._id));
+  }
 
   getLists(): Observable<List[]> {
     return this.http.get<List[]>(this.listsUrl);
@@ -46,6 +36,10 @@ export class ListService {
     return this.http.get<List>(this.mainListUrl);
   }
 
+  getMainListId(): string {
+    return this.mainListId;
+  }
+
   deleteList(list: List): Observable<List> {
     const url = `${this.listsUrl}/${list._id}`;
     return this.http.delete<List>(url, httpOptions);
@@ -53,9 +47,6 @@ export class ListService {
 
   addList(list: List): Observable<List> {
     const response = this.http.post<List>(this.listsUrl, list, httpOptions);
-    // response.subscribe(list => {
-    //   this.lists.
-    // });
     return response;
   }
 

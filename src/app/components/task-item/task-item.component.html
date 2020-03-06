@@ -1,6 +1,6 @@
 <mat-card class="task-card">
   <mat-card-header>
-    <div class="task-icon">
+    <div class="task-icon" *ngIf="!isDailyTask">
       <mat-icon (click)="onHomeClicked()">home</mat-icon>
     </div>
     <mat-card-title class="task-title">
