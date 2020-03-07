@@ -18,6 +18,8 @@ export class AddListComponent implements OnInit {
       title: this.title,
       isMain: false
     };
-    this.listService.addList(list).subscribe();
+    this.listService
+      .addList(list)
+      .subscribe(res => this.listService.setMessage(""));
   }
 }

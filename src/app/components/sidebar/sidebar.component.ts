@@ -1,10 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { map } from "rxjs/operators";
 
 import { List } from "../../models/List";
 import { ListService } from "../../services/list.service";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-sidebar",
@@ -13,10 +10,15 @@ import { Observable } from "rxjs";
 })
 export class SidebarComponent implements OnInit {
   lists: List[];
-  constructor(public listService: ListService) {}
+  constructor(private listService: ListService) {}
 
   ngOnInit(): void {
     this.getLists();
+    this.subscribeToListService();
+  }
+
+  subscribeToListService() {
+    this.listService.message.subscribe(res => this.getLists());
   }
 
   getLists() {

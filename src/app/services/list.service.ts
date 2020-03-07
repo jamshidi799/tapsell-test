@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { List } from "../models/List";
-import { map } from "rxjs/operators";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,9 +17,14 @@ export class ListService {
   listsUrl: string = "http://localhost:3000/api/lists";
   mainListUrl: string = "http://localhost:3000/api/mainList";
   mainListId: string;
+  message = new Subject<string>();
 
   constructor(private http: HttpClient) {
     this.getMainList().subscribe(list => (this.mainListId = list._id));
+  }
+
+  setMessage(value: string) {
+    this.message.next(value);
   }
 
   getLists(): Observable<List[]> {
@@ -40,14 +44,13 @@ export class ListService {
     return this.mainListId;
   }
 
-  deleteList(list: List): Observable<List> {
-    const url = `${this.listsUrl}/${list._id}`;
+  deleteList(listId: string): Observable<List> {
+    const url = `${this.listsUrl}/${listId}`;
     return this.http.delete<List>(url, httpOptions);
   }
 
   addList(list: List): Observable<List> {
-    const response = this.http.post<List>(this.listsUrl, list, httpOptions);
-    return response;
+    return this.http.post<List>(this.listsUrl, list, httpOptions);
   }
 
   editList(list: List): Observable<any> {

@@ -1,5 +1,41 @@
 <div *ngIf="list; else elseBlock">
-  <header class="list-header">{{ list.title }}</header>
+  <header class="list-header">
+    <mat-expansion-panel
+      *ngIf="!list.isMain"
+      [expanded]="panelOpenState"
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        {{ list.title }}
+      </mat-expansion-panel-header>
+      <form class="form" (ngSubmit)="editListTitle()">
+        <mat-form-field class="form-field">
+          <mat-label color="accent">title</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="list.title"
+            name="title"
+            placeholder="Add title..."
+          />
+        </mat-form-field>
+        <br />
+        <button
+          mat-raised-button
+          color="accent"
+          role="submit"
+          class="add-task-btn"
+        >
+          edit
+        </button>
+      </form>
+    </mat-expansion-panel>
+
+    <mat-icon *ngIf="!list.isMain" class="delete-list-btn" (click)="onDelete()"
+      >delete</mat-icon
+    >
+  </header>
   <app-task [listId]="list._id"></app-task>
 </div>
 <ng-template #elseBlock>is loading</ng-template>

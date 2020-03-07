@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs/operators";
 
 import { List } from "../../models/List";
@@ -15,10 +15,12 @@ export class ListComponent implements OnInit {
   @Input() isMain: boolean;
   list: List;
   id: Observable<string>;
+  panelOpenState: boolean = false;
 
   constructor(
     private listService: ListService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,5 +41,17 @@ export class ListComponent implements OnInit {
       });
   }
 
-  editListTitle() {}
+  onDelete() {
+    this.listService
+      .deleteList(this.list._id)
+      .subscribe(val => this.listService.setMessage(""));
+    this.router.navigate(["/"]);
+  }
+
+  editListTitle() {
+    this.listService.editList(this.list).subscribe(list => {
+      this.listService.setMessage("");
+    });
+    this.panelOpenState = false;
+  }
 }
